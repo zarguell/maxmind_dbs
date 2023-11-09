@@ -61,15 +61,15 @@ jobs:
       run: |
         wget -nv -O- "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key=${{ secrets.LICENSE_KEY }}&suffix=tar.gz" | tar zxv
         mkdir -p country/
-        cp -v GeoLite*/*.mmdb city
+        cp -v GeoLite*/*.mmdb country
         rm -rf GeoLite*/
 
     - name: Download GeoLite2 Country CSV Format
       run: |
         wget -nv -O GeoLite.zip "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&license_key=${{ secrets.LICENSE_KEY }}&suffix=zip"
-        mkdir -p city/
+        mkdir -p country/
         unzip -q GeoLite.zip
-        cp -v GeoLite*/*.csv city
+        cp -v GeoLite*/*.csv country
         rm -rf GeoLite*/
 
     - name: Commit and push if it changed
@@ -78,5 +78,5 @@ jobs:
         git config user.email "actions@users.noreply.github.com"
         git add -A
         timestamp=$(date -u)
-        git commit -m "Update GeoLite: ${timestamp}" || exit 0
+        git commit -m "Update MaxMind Data: ${timestamp}" || exit 0
         git push
