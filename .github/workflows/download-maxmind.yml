@@ -8,7 +8,7 @@
 # Description: Publish GeoLite.mmdb
 #
 
-name: Publish GeoLite.mmdb
+name: Download DBs weekly
 
 on:
   repository_dispatch:
