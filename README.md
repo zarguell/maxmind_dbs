@@ -12,3 +12,5 @@ Downloads the following free Maxmind DBs:
 | GeoLite2 Country: CSV Format | Edition ID:<br>GeoLite2-Country-CSV<br>Format:<br>GeoIP2 CSV (docs) | Database URL:<br>https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&license_key=YOUR_LICENSE_KEY&suffix=zip<br>SHA256 URL:<br>https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&license_key=YOUR_LICENSE_KEY&suffix=zip.sha256 |
 
 Reference: https://www.maxmind.com/en/accounts/current/geoip/downloads
+
+Note; GeoLite2 City CSV not stored at this time; file size too big and requires Github LFS.

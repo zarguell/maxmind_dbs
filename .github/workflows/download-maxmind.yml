@@ -49,13 +49,13 @@ jobs:
         cp -v GeoLite*/*.mmdb city
         rm -rf GeoLite*/
 
-    - name: Download GeoLite2 City CSV Format
-      run: |
-        wget -nv -O GeoLite.zip "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City-CSV&license_key=${{ secrets.LICENSE_KEY }}&suffix=zip"
-        mkdir -p city/
-        unzip -q GeoLite.zip
-        cp -v GeoLite*/*.csv city
-        rm -rf GeoLite*/
+    # - name: Download GeoLite2 City CSV Format
+    #   run: |
+    #     wget -nv -O GeoLite.zip "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City-CSV&license_key=${{ secrets.LICENSE_KEY }}&suffix=zip"
+    #     mkdir -p city/
+    #     unzip -q GeoLite.zip
+    #     cp -v GeoLite*/*.csv city
+    #     rm -rf GeoLite*/
 
     - name: Download GeoLite2 Country
       run: |
