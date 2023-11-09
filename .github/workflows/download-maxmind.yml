@@ -36,10 +36,12 @@ jobs:
 
     - name: Download GeoLite2 ASN CSV Format
       run: |
-        wget -nv -O- "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN-CSV&license_key=${{ secrets.LICENSE_KEY }}&suffix=zip" | unzip -q
+        wget -nv -O GeoLite.zip "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN-CSV&license_key=${{ secrets.LICENSE_KEY }}&suffix=zip"
         mkdir -p asn/
-        cp -v GeoLite*/*.csv asn
-        rm -rf GeoLite*/
+        unzip -q GeoLite2.zip -d tmp/
+        cp -v tmp/*.csv asn
+        rm -rf tmp/
+        rm GeoLite2.zip
 
     - name: Download GeoLite2 City
       run: |
@@ -50,10 +52,12 @@ jobs:
 
     - name: Download GeoLite2 City CSV Format
       run: |
-        wget -nv -O- "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City-CSV&license_key=${{ secrets.LICENSE_KEY }}&suffix=zip" | unzip -q
+        wget -nv -O GeoLite.zip "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City-CSV&license_key=${{ secrets.LICENSE_KEY }}&suffix=zip"
         mkdir -p city/
-        cp -v GeoLite*/*.csv city
-        rm -rf GeoLite*/
+        unzip -q GeoLite2.zip -d tmp/
+        cp -v tmp/*.csv asn
+        rm -rf tmp/
+        rm GeoLite2.zip
 
     - name: Download GeoLite2 Country
       run: |
@@ -64,10 +68,12 @@ jobs:
 
     - name: Download GeoLite2 Country CSV Format
       run: |
-        wget -nv -O- "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&license_key=${{ secrets.LICENSE_KEY }}&suffix=zip" | unzip -q
+        wget -nv -O GeoLite.zip "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&license_key=${{ secrets.LICENSE_KEY }}&suffix=zip"
         mkdir -p city/
-        cp -v GeoLite*/*.csv city
-        rm -rf GeoLite*/
+        unzip -q GeoLite2.zip -d tmp/
+        cp -v tmp/*.csv asn
+        rm -rf tmp/
+        rm GeoLite2.zip
 
     - name: Commit and push if it changed
       run: |-
