@@ -1,0 +1,79 @@
+#
+# Copyright (c) 2020-2021 P3TERX <https://p3terx.com>
+#
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
+# https://github.com/P3TERX/GeoLite.mmdb
+# Description: Publish GeoLite.mmdb
+#
+
+name: Publish GeoLite.mmdb
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 23 * * WED
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Download GeoLite2 ASN
+      run: |
+        wget -nv -O- "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN&license_key=${{ secrets.LICENSE_KEY }}&suffix=tar.gz" | tar zxv
+        mkdir -p asn/
+        cp -v GeoLite*/*.mmdb asn
+        rm -rf GeoLite*/
+
+    - name: Download GeoLite2 ASN CSV Format
+      run: |
+        wget -nv -O- "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN-CSV&license_key=${{ secrets.LICENSE_KEY }}&suffix=zip" | unzip -q
+        mkdir -p asn/
+        cp -v GeoLite*/*.csv asn
+        rm -rf GeoLite*/
+
+    - name: Download GeoLite2 City
+      run: |
+        wget -nv -O- "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=${{ secrets.LICENSE_KEY }}&suffix=tar.gz" | tar zxv
+        mkdir -p city/
+        cp -v GeoLite*/*.mmdb city
+        rm -rf GeoLite*/
+
+    - name: Download GeoLite2 City CSV Format
+      run: |
+        wget -nv -O- "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City-CSV&license_key=${{ secrets.LICENSE_KEY }}&suffix=zip" | unzip -q
+        mkdir -p city/
+        cp -v GeoLite*/*.csv city
+        rm -rf GeoLite*/
+
+    - name: Download GeoLite2 Country
+      run: |
+        wget -nv -O- "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key=${{ secrets.LICENSE_KEY }}&suffix=tar.gz" | tar zxv
+        mkdir -p country/
+        cp -v GeoLite*/*.mmdb city
+        rm -rf GeoLite*/
+
+    - name: Download GeoLite2 Country CSV Format
+      run: |
+        wget -nv -O- "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&license_key=${{ secrets.LICENSE_KEY }}&suffix=zip" | unzip -q
+        mkdir -p city/
+        cp -v GeoLite*/*.csv city
+        rm -rf GeoLite*/
+
+    - name: Commit and push if it changed
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git add -A
+        timestamp=$(date -u)
+        git commit -m "Update GeoLite: ${timestamp}" || exit 0
+        git push
