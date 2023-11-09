@@ -41,6 +41,7 @@ jobs:
         unzip -q GeoLite.zip
         cp -v GeoLite*/*.csv asn
         rm -rf GeoLite*/
+        rm GeoLite.zip
 
     - name: Download GeoLite2 City
       run: |
@@ -71,6 +72,7 @@ jobs:
         unzip -q GeoLite.zip
         cp -v GeoLite*/*.csv country
         rm -rf GeoLite*/
+        rm GeoLite.zip
 
     - name: Commit and push if it changed
       run: |-
