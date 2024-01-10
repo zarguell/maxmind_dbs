@@ -146,7 +146,7 @@ geoname_id,locale_code,continent_code,continent_name,country_iso_code,country_na
 2622320,fr,EU,Europe,FO,"Îles Féroé",0
 2623032,fr,EU,Europe,DK,Danemark,1
 2629691,fr,EU,Europe,IS,Islande,0
-2635167,fr,EU,Europe,GB,"Royaume Uni",0
+2635167,fr,EU,Europe,GB,Royaume-Uni,0
 2658434,fr,EU,Europe,CH,Suisse,0
 2661886,fr,EU,Europe,SE,Suède,1
 2750405,fr,EU,Europe,NL,Pays-Bas,1

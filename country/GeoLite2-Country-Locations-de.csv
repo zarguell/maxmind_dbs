@@ -146,7 +146,7 @@ geoname_id,locale_code,continent_code,continent_name,country_iso_code,country_na
 2622320,de,EU,Europa,FO,Färöer,0
 2623032,de,EU,Europa,DK,Dänemark,1
 2629691,de,EU,Europa,IS,Island,0
-2635167,de,EU,Europa,GB,"Vereinigtes Königreich",0
+2635167,de,EU,Europa,GB,UK,0
 2658434,de,EU,Europa,CH,Schweiz,0
 2661886,de,EU,Europa,SE,Schweden,1
 2750405,de,EU,Europa,NL,Niederlande,1
@@ -241,7 +241,7 @@ geoname_id,locale_code,continent_code,continent_name,country_iso_code,country_na
 5854968,de,OC,Ozeanien,UM,"Amerikanische Überseeinseln",0
 5880801,de,OC,Ozeanien,AS,Amerikanisch-Samoa,0
 6251999,de,NA,Nordamerika,CA,Kanada,0
-6252001,de,NA,Nordamerika,US,"Vereinigte Staaten",0
+6252001,de,NA,Nordamerika,US,USA,0
 6254930,de,AS,Asien,PS,Palästina,0
 6255147,de,AS,Asien,,,0
 6255148,de,EU,Europa,,,0
